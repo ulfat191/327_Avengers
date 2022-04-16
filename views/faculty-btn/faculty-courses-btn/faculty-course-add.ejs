@@ -1,1 +1,79 @@
+<!-- ADD Course (Button) -->
+<% isDisabled = 'disabled' %>
+<% if (foundFaculty.semesterStatus === true) { %>
+    <% isDisabled = '' %>
+<% } else { %>
+    <% isDisabled = 'disabled' %>
+<% } %>
 
+<button type="button"
+        <%= isDisabled %>
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#facultyAddStudent">
+    <i class="bi bi-window-stack"></i> Add Course <i class="bi bi-plus-lg"></i>
+</button>
+<!-- /ADD Course (Button) -->
+
+<!-- ADD Course (Floating Form) -->
+<div class="modal fade"
+     id="facultyAddStudent"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog floating-card">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="staticBackdropLabel">Add Course <i class="bi bi-plus-lg"></i></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form class="row" action="/faculty-courses" method="post">
+
+                    <!-- CRUD Information -->
+                    <input type="hidden" name="CRUD" value="FACULTY_ADD_COURSE">
+                    <input type="hidden" name="email" value="<%= foundFaculty.email %>">
+                    <input type="hidden" name="firstName" value="<%= foundFaculty.firstName %>">
+                    <input type="hidden" name="lastName" value="<%= foundFaculty.lastName %>">
+                    <!-- /CRUD Information -->
+
+                    <div class="col-12 mt-3">
+                        <label for="inputState" class="form-label">Course</label>
+                        <select id="inputState" class="form-select" name="courseCode" required>
+                            <option value="">Choose...</option>
+                            <% if (typeof foundCourses !== 'undefined' ) { %>
+                                <% foundCourses.forEach((course)=> { %>
+                                    <option value="<%= course.courseCode %>">
+                                        <%= course.courseCode %>
+                                        <%= course.courseDetails %>
+                                    </option>
+                                <% }); %>
+                            <% } %>
+                        </select>
+                    </div>
+
+                    <div class="col-12 mt-2 mb-3">
+                        <label for="courseSemester" class="form-label">Semester</label>
+                        <input type="text"
+                               class="form-control"
+                               id="courseSemester"
+                               name="courseSemester"
+                               placeholder="Fall 2021"
+                               required>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /ADD Course (Floating Form) -->
