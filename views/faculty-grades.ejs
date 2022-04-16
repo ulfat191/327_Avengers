@@ -3,17 +3,6 @@
 <main class="main-dashboard pt-0">
     <div class="container-fluid">
         <div class="row">
-
-            <!-- ADD Courses -->
-            <div class="row">
-                <div class="col mt-2">
-                    <% if (typeof foundFaculty !== 'undefined' ) { %>
-                        <%- include("faculty-btn/faculty-courses-btn/faculty-course-add.ejs", {foundFaculty: foundFaculty}) -%>
-                    <% } %>
-                </div>
-            </div>
-            <!-- /ADD Courses -->
-
             <div class="col-12 mt-2">
                 <div class="card pt-1">
                     <div class="card-body">
@@ -24,7 +13,7 @@
                                     <th>Course Details</th>
                                     <th>Credit</th>
                                     <th>Semester</th>
-                                    <th style="width: 0">Delete</th>
+                                    <th style="width: 0">Grades</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,9 +25,19 @@
                                             <td><%= grade.courseCredit %></td>
                                             <td><%= grade.semesterName %></td>
                                             <td>
-                                                <!-- DELETE Courses -->
-                                                <%- include("faculty-btn/faculty-courses-btn/faculty-course-delete.ejs", {grade: grade}) -%>
-                                                <!-- /DELETE Courses -->
+                                                <form action="/faculty-grades" method="post">
+
+                                                    <!-- CRUD Information -->
+                                                    <input type="hidden" name="CRUD" value="FACULTY_STUDENT_GRADES">
+                                                    <input type="hidden" name="_id" value="<%= grade._id %>">
+                                                    <!-- /CRUD Information -->
+
+                                                    <button type="button"
+                                                            class="btn btn-success"
+                                                            onclick="this.parentNode.submit();">
+                                                        <i class="bi bi-fullscreen-exit"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     <% }); %>
