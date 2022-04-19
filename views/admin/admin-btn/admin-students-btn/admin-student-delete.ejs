@@ -1,0 +1,51 @@
+<!-- DELETE Student (Button) -->
+<button type="button"
+        class="btn btn-danger"
+        data-bs-toggle="modal"
+        data-bs-target="#deleteStudent<%= student.studentId %>"><i class="bi bi-trash2"></i>
+</button>
+<!-- DELETE Student (Button) -->
+
+<!-- DELETE Student (Floating Form) -->
+<div class="modal fade"
+     id="deleteStudent<%= student.studentId %>"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog floating-card">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold text-muted" id="staticBackdropLabel">Delete Student <i class="bi bi-trash2"></i></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form class="row" action="/admin-students" method="post">
+
+                    <!-- CRUD Information -->
+                    <input type="hidden" name="CRUD" value="ADMIN_DELETE_STUDENT">
+                    <input type="hidden" name="studentId" value="<%= student.studentId %>">
+                    <!-- /CRUD Information -->
+
+                    <div class="text-center">
+                        <img src="/img/cross.png" width="80" height="80" alt="faculty-logo">
+                        <h5 class="p-4 text-muted fw-bold">
+                            Do you really want to delete the student with id
+                            <label style="color: #b70c0c"><%= student.studentId %></label>?
+                        </h5>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /DELETE Student (Floating Form) -->
