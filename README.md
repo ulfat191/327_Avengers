@@ -1,9 +1,7 @@
-# 327_Avengers_Project
+# 327Avengers 
+
 Education Management System
 
-CSE 327-Section#5
+## Installation
 
-Team members - 
-Md Ulfat Tahsin;
-Sarah Jasim;
-Seam E Nur Sami.
+Use [npm](https://docs.npmjs.com/downloading-and-installing-packages-locally) (node package manager) to install the **node modules**.
