@@ -1,9 +1,17 @@
-# 327_Avengers_Project
-Education Management System
+# CSE327 Project
 
-CSE 327-Section#5
+Scholarship Management System
 
-Team members - 
-Md Ulfat Tahsin;
-Sarah Jasim;
-Seam E Nur Sami.
+## Installation
+
+Use [npm](https://docs.npmjs.com/downloading-and-installing-packages-locally) (node package manager) to install the **node modules**.
+
+```bash
+npm install 
+```
+
+## Security
+
+Please contact with the project admin for the **config.env** file. 
+
+
