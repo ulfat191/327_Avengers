@@ -1,0 +1,88 @@
+<%- include("student-partials/student-header.ejs") -%>
+
+<main class="main-dashboard pt-0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 mt-2">
+                <div class="card pt-1">
+                    <div class="card-body">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Course Code</th>
+                                    <th>Course Details</th>
+                                    <th>Credit</th>
+                                    <th>Faculty</th>
+                                    <th>Semester</th>
+                                    <th>Status</th>
+                                    <th style="width: 0">Take</th>
+                                    <th style="width: 0">Drop</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (typeof foundGrades !== 'undefined') { %>
+                                    <% foundGrades.forEach((grade) => { %>
+                                        <tr>
+                                            <td><%= grade.courseCode %></td>
+                                            <td><%= grade.courseDetails %></td>
+                                            <td><%= grade.courseCredit %></td>
+                                            <td><%= grade.courseFacultyFirstName %> <%= grade.courseFacultyLastName %></td>
+                                            <td><%= grade.semesterName %></td>
+
+                                            <td>
+                                                <% let status = false %>
+                                                <% grade.courseStudent.forEach((course) => { %>
+                                                    <% if(course.courseStudentId === studentId) { %>
+                                                        <span style="color: green; font-weight: bold">
+                                                            Unlocked <i class="bi bi-unlock-fill"></i>
+                                                        </span>
+                                                        <% status = true %>
+                                                    <% } %>
+                                                <% }); %>
+                                                <% if (status === false) { %>
+                                                    <span style="color: red; font-weight: bold">
+                                                        Locked <i class="bi bi-lock-fill"></i>
+                                                    </span>
+                                                <% } %>
+                                            </td>
+
+                                            <td>
+                                                <form action="/student-courses" method="post">
+
+                                                    <!-- CRUD Information -->
+                                                    <input type="hidden" name="CRUD" value="STUDENT_TAKE_COURSE">
+                                                    <input type="hidden" name="_id" value="<%= grade._id %>">
+                                                    <!-- /CRUD Information -->
+
+                                                    <% let gradeStatus = '' %>
+                                                    <% grade.courseStudent.forEach((course) => { %>
+                                                        <% if(course.courseStudentGradeStatus === true && course.courseStudentId === studentId) { %>
+                                                            <% gradeStatus = 'disabled' %>
+                                                        <% } %>
+                                                    <% }); %>
+
+                                                    <button <%= gradeStatus %>
+                                                            class="btn btn-success"
+                                                            type="submit">
+                                                        <i class="bi bi-plus-circle-dotted"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <!-- DELETE Courses -->
+                                                <%- include("student-btn/student-courses-btn/student-course-drop.ejs", {grade: grade}) -%>
+                                                <!-- /DELETE Courses -->
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include("student-partials/student-footer.ejs") -%>
