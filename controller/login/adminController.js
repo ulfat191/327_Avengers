@@ -1,16 +1,37 @@
 const data = require('../../database/data.js');
+/**
+ * This will add the student javascript file fom the student javascript module.
+ */
 const Student = require('../../model/studentSchema.js');
+/**
+ * This will add the faculty javascript file fom the faculty javascript module.
+ */
 const Faculty = require('../../model/facultySchema.js');
+/**
+ * This will add the course javascript file fom the course javascript module.
+ */
 const Course = require('../../model/courseSchema.js');
 
 // ADMIN -------------------------------------------------------------------------------------------------- (Dashboard)
+/**
+ * admin_dashboar_get method. 
+ * The admin will only be able to log in/out of the system.
+ * The software development team will give the admin the login email and password for the admin access.
+ * The admin will be able to log into the admin portal using these credentials. 
+ * The admin will not be able to change or reset login credentials. 
+ * Upon giving the email and password, the admin has to click the ‘login’ button. The system will then verify the login credentials and redirect the admin to the admin portal if they are correct. 
+ * If the wrong credentials are given, the system will show error messages to the admin.
+*/
 exports.admin_dashboard_get = (req, res) => {
     if (req.session.adminAuth === true) {
         const sidebarNav = {dashboard: 'active'};
         res.render('admin/admin-dashboard', {sidebarNav});
     }
 }
-
+/**
+ * admin_dashboard_post method.
+ * The admin can log out of the system by clicking the ‘logout’ button. The system will immediately take the admin to the login screen after the logout.
+ */
 exports.admin_dashboard_post = (req, res) => {
     if (req.session.adminAuth === true) {
         res.redirect('/admin-dashboard');
@@ -18,6 +39,11 @@ exports.admin_dashboard_post = (req, res) => {
 }
 
 // ADMIN ---------------------------------------------------------------------------------------------------- (Student)
+/**
+ * admin_student_get method.
+ * Using exports.admin_students_get the admin will be able to check for already registered student. 
+ * It will enable the admin to restrict the creation of student ids.
+ */
 exports.admin_students_get = async (req, res) => {
     if (req.session.adminAuth === true) {
 
@@ -37,6 +63,17 @@ exports.admin_students_get = async (req, res) => {
     }
 }
 
+/**
+ * admin_student_post method.
+ * Using exports.admin_students_port the admin will be able to add new students into the system and view student information.
+ * The admin will be able to add new students, update existing student information and delete students from the system.  .  
+ * Students who are already added cannot be added anymore. 
+ * The admin can add a new student with a unique identification number by filling out a form and clicking the ‘register’ button.
+ * The system will reserve this identification number for the student to create a student account.
+ * The admin can also update student information by clicking the ‘update’ button and refilling the existing form. 
+ * Once a student is registered into the system, the admin will not be allowed to change the unique identification number.  
+ * The admin can delete a student from the system. Deletion will be completed with a pop-up for a final confirmation message. Once the deletion is done, it cannot be reversed
+ */
 exports.admin_students_post = (req, res) => {
     if (req.session.adminAuth === true) {
 
@@ -125,6 +162,11 @@ exports.admin_students_post = (req, res) => {
 }
 
 // ADMIN ---------------------------------------------------------------------------------------------------- (Faculty)
+/**
+ * admin_faculties_get method.
+ * Using exports.admin_faculties_get the admin will be able to check for already registered faculties. 
+ * It will enable the admin to restrict the creation of duplicate faculty ids. 
+ */
 exports.admin_faculties_get = (req, res) => {
     if (req.session.adminAuth === true) {
 
@@ -143,7 +185,15 @@ exports.admin_faculties_get = (req, res) => {
         });
     }
 }
-
+/**
+ * admin_faculties_post method.
+ * Using export.admin_faculties_get the admin will be able to add new faculties, update existing faculty information, see faculty details and status, and delete faculty from the system.  
+ * The admin can add a new faculty with a unique email address by filling out a form and clicking the ‘register’ button.
+ * The system will reserve this email address for the faculty to create a faculty account.
+ * The admin can update faculty information by clicking the ‘update’ button and refilling the existing form. 
+ * The admin can see the faculty registration status and current semester status.
+ * Once a faculty is registered into the system, the admin will not be allowed to change the unique email address.  
+ */
 exports.admin_faculties_post = (req, res) => {
     if (req.session.adminAuth === true) {
 
@@ -227,6 +277,11 @@ exports.admin_faculties_post = (req, res) => {
 }
 
 // ADMIN ---------------------------------------------------------------------------------------------------- (Courses)
+/**
+ * admin_courses_get method.
+ * Using exports.admin_courses_get the admin will be able to check for alredy opened or created courses. 
+ * It will enable the admin to restrict the creation of duplicate courses. 
+ */
 exports.admin_courses_get = (req, res) => {
     if (req.session.adminAuth === true) {
 
@@ -245,7 +300,13 @@ exports.admin_courses_get = (req, res) => {
         });
     }
 }
-
+/**
+ * admin_courses_post method.
+ * The admin can add new courses, update existing course information, and delete courses from the system. 
+ * The admin can new courses with unique course code and course details by filling out a form and clicking the ‘create’ button.
+ * The existing course code and details can be updated by clicking the ‘update’ button.
+ * The courses can be deleted from the system by clicking the ‘delete’ button. Once the deletion is done, it cannot be reversed. 
+ */
 exports.admin_courses_post = (req, res) => {
     if (req.session.adminAuth === true) {
 
