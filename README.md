@@ -1,17 +1,7 @@
-# CSE327 Project
+# 327Avengers 
 
-Scholarship Management System
+Education Management System
 
 ## Installation
 
 Use [npm](https://docs.npmjs.com/downloading-and-installing-packages-locally) (node package manager) to install the **node modules**.
-
-```bash
-npm install 
-```
-
-## Security
-
-Please contact with the project admin for the **config.env** file. 
-
-
