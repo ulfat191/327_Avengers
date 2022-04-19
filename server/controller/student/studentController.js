@@ -1,5 +1,6 @@
 const Student = require('../../model/studentSchema.js');
 const Grade = require("../../model/gradeSchema.js");
+const Scholarship = require("../../model/scholarshipSchema.js");
 
 // STUDENT ----------------------------------------------------------------------------------------------------- (Home)
 /**
@@ -27,12 +28,16 @@ exports.student_dashboard_post = (req, res) => {
 /**
  * This function will check and retrieve the student profile of the student if he is logged in properly.
  */
-exports.student_profile_get = (req, res) => {
+ exports.student_profile_get = (req, res) => {
     if (req.session.studentAuth === true) {
         Student.findOne({studentId: req.session.studentLoginId}, (err, foundStudent) => {
             if (!err) {
-                const sidebarNav = {profile: 'active'};
-                res.render('student/student-profile', {foundStudent, foundScholarship, sidebarNav});
+                Scholarship.findOne({studentId: req.session.studentLoginId}, (err, foundScholarship) => {
+                    if (!err) {
+                        const sidebarNav = {profile: 'active'};
+                        res.render('student/student-profile', {foundStudent, foundScholarship, sidebarNav});
+                    } else console.log(err);
+                });
             } else console.log(err);
         });
     }
