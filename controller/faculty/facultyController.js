@@ -4,13 +4,21 @@ const Grade = require("../../model/gradeSchema.js");
 const Scholarship = require("../../model/scholarshipSchema.js");
 
 // FACULTY ----------------------------------------------------------------------------------------------------- (Home)
+/**
+ * The faculty will only be able to log in/register in the system.
+ * The faculty will be able to change or reset login credentials. 
+ * Upon giving the email and password, the faculty has to click the ‘login’ button. The system will then verify the login credentials and redirect the faculty to the student portal if they are correct. 
+ * If the wrong credentials are given, the system will show error messages to the faculty.
+*/
 exports.faculty_dashboard_get = (req, res) => {
     if (req.session.facultyAuth === true) {
         const sidebarNav = {home: 'active'};
         res.render('faculty/faculty-dashboard', {sidebarNav});
     }
 }
-
+/**
+ * The faculty can log out of the system by clicking the ‘logout’ button. The system will immediately take the student to the login screen after the logout.
+ */
 exports.faculty_dashboard_post = (req, res) => {
     if (req.session.facultyAuth === true) {
         res.redirect('/faculty-dashboard');
@@ -18,6 +26,9 @@ exports.faculty_dashboard_post = (req, res) => {
 }
 
 // FACULTY -------------------------------------------------------------------------------------------------- (Profile)
+/**
+ * This function will check and retrieve the faculty profile of the faculty if he is logged in properly.
+ */
 exports.faculty_profile_get = (req, res) => {
     if (req.session.facultyAuth === true) {
         Faculty.findOne({email: req.session.facultyEmail}, (err, foundFaculty) => {
@@ -28,7 +39,10 @@ exports.faculty_profile_get = (req, res) => {
         });
     }
 }
-
+/**
+ * This function is used for updating the faculty's profile information.
+ * Updatable information includes phone, DoB, citizenship and address.
+ */
 exports.faculty_profile_post = (req, res) => {
     if (req.session.facultyAuth === true) {
 
@@ -87,6 +101,9 @@ exports.faculty_profile_post = (req, res) => {
 }
 
 // FACULTY -------------------------------------------------------------------------------------------------- (Courses)
+/**
+ * The function retrieves the list of courses accessible and available for the faculty to take.
+ */
 exports.faculty_courses_get = (req, res) => {
     if (req.session.facultyAuth === true) {
         Faculty.findOne({email: req.session.facultyEmail}, (err, foundFaculty) => {
@@ -108,7 +125,10 @@ exports.faculty_courses_get = (req, res) => {
         });
     }
 }
-
+/**
+ * The function is used for the CRUD operations involving faculties and courses. It allows the faculty to
+ * take courses, drop courses and to retrieve the courses the faculty instructs.
+ */
 exports.faculty_courses_post = (req, res) => {
     if (req.session.facultyAuth === true) {
 
@@ -176,6 +196,9 @@ exports.faculty_courses_post = (req, res) => {
 }
 
 // FACULTY --------------------------------------------------------------------------------------------------- (Grades)
+/**
+ * The function is used to view the grades given by the faculty for respective courses.
+ */
 exports.faculty_grades_get = (req, res) => {
     if (req.session.facultyAuth === true) {
         Grade.find({courseFacultyEmail: req.session.facultyEmail}, (err, foundGrades) => {
@@ -189,7 +212,9 @@ exports.faculty_grades_get = (req, res) => {
         });
     }
 }
-
+/**
+ * The function is used to view and change or assign a grade of the student, then calculate their cgpa. 
+ */
 exports.faculty_grades_post = (req, res) => {
     if (req.session.facultyAuth === true) {
 
