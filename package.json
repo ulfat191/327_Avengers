@@ -1,13 +1,13 @@
 {
   "name": "final_project",
   "version": "1.0.0",
-  "description": "Scholarship Management System",
+  "description": "Education Management System",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon server.js"
   },
-  "author": "Mominul Islam, Shazia Mahazaben, Tashfiha Faruk",
+  "author": "Md Ulfat Tahsin, Sarah Jasim, Seam E Nur Sami",
   "license": "ISC",
   "engines": {
     "node": "16.10.0"
