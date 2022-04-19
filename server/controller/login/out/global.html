@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Global</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Global</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="Admin"><span class="type-signature">(constant) </span>Admin<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Login Object.
+Once registerd it will include options for the users (admin, faculty and students) to log in to the Education Management System.
+Admin and faculty can login using their respective email and password. 
+Students can login using their respective students ID and password. 
+Details of the login procedure is documented below.
+Login validation for admin.
+The following require is used to add the adminSchema.js file to this loginController.js file.
+The admin is only allowed to log in and out of the system.
+Admin will get the login credentials which includes email id and password from the software development team. 
+The admin can login to the system using the provided credentials and then by clicking on the login button. 
+The admin can not change the login credentials provided by the development team. 
+The login credentials once entered for login by the admin will be verified by the system. 
+Once verified the admin will be redirected to the admin portal dashboard. 
+If invalid information is provided in the login page, the admin will be kept on the login page and an error message will be displayed.
+By clicking the logout button the admin can logout and the system will take the admin back to the login page immediately.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loginController.js.html">loginController.js</a>, <a href="loginController.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="Faculty"><span class="type-signature">(constant) </span>Faculty<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Login validation for faculty.
+The following require is used to add the facultySchema.js file to this loginController.js file.
+A faculty can register and log in or out of the system. 
+The faculty will need an admin approved email address as credential to register. 
+The faculty can login to the system using the email address and password and then clicking on the login button.
+The system will check for validation of the faculty information.
+If the email ID and password is correct and verified the faculty can access the faculty portal dashboard.  
+If invalid information is provided in the login page, the faculty will be kept on the login page and an error message will be displayed.
+By clicking the logout button the faculty can logout and the system will take the faculty back to the login page immediately.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loginController.js.html">loginController.js</a>, <a href="loginController.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="Student"><span class="type-signature">(constant) </span>Student<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Login validation for student.
+The following require is used to add the studentSchema.js file to this loginController.js file.
+The student will require an admin approved credentials to register. 
+The student can login to the system using his/her unique ID and password and then clicking on the login button.
+The system will check for validation of the student information.
+If the unique ID and password is correct and verified the student can access the student portal dashboard.  
+If invalid information is provided in the login page, the student will be kept on the login page and an error message will be displayed.
+By clicking the logout button the student can logout and the system will take the student back to the login page immediately.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="loginController.js.html">loginController.js</a>, <a href="loginController.js.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Admin">Admin</a></li><li><a href="global.html#Faculty">Faculty</a></li><li><a href="global.html#Student">Student</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Sun Apr 17 2022 21:13:27 GMT+0600 (Bangladesh Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
